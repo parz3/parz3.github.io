@@ -1,68 +1,52 @@
 <html lang="en">
   <head>
     <title>Rock, paper, scissors</title>
-
-    <!-- import jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-    <!-- jQuery script to prevent forms from refreshing the page and routing image clicks -->
-    <script>
-    
-      $(document).ready(function() {
-        $(function() {
-          $("form").submit(function() { return false; });
-        });
-      
-        $("#rock").click(function(){
-           doTurn("rock");
-        });
-        
-        $("#paper").click(function(){
-           doTurn("paper");
-        });
-        
-        $("#scissors").click(function(){
-           doTurn("scissors");
-        });
-      });
-    
-    </script>
-    <!-- End jQuery script -->
-
-    <!-- Begin stylesheet -->
-    <style>
-      html {
-        margin: 5px 25px;
-        font-size: 26px; font-family: helvetica;
-        font-weight: 700;
-        text-align: center;
-      }
-    </style>
-    <!-- End stylesheet -->
-    
   </head>
   <body>
-
-    <!-- These images are the user interface -->
     
-    <img src="../assets/rock-paper-scissors.jpg" width="702" height="380" 
-      alt="rock, paper, scissors icons" usemap="#map" />
+    <script>
+      /* TODO: 
+        -user input
+        -score increments
+        -add output other than console
+        -move script to external file
+      */
 
-    <map name="map">
-      <area shape="rect" coords="55,69,230,287" id="rock" alt="rock icon">
-      <area shape="rect" coords="260,80,471,292" id="paper" alt="paper icon">
-      <area shape="rect" coords="473,25,663,302" id="scissors" alt="scissors icon">
-    </map>
+      // string variables to hold possible choices
+      // we'll use these later on
+      var choice1 = "rock";
+      var choice2 = "paper";
+      var choice3 = "scissors";
 
-    <!-- our JS script will send return 
-         HTML to this div element -->
-    <div id="output"><br></div>
-
-    <!-- Here's the link to our JavaScript file.
-         It's at the bottom of the page to ensure
-         that the browser has loaded all HTML elements 
-         before the script loads. -->
-    <script src="rockpaperscissors.js">
+      // number variables to hold the scores
+      var humanScore = 0;
+      var computerScore = 0;
+      
+      // string variables to hold the choices
+      var humanChoice = "";
+      var computerChoice = "";
+    
+      doTurn(); // just testing our function
+        
+      function doTurn() {
+         humanChoice = "scissors"; // TODO: allow user input later
+         computerChoice = "paper"; // try changing these values to test!
+         
+         if (humanChoice === computerChoice) { // Draw
+            console.log("Draw!");    
+         }
+         else if (humanChoice === "rock" && computerChoice === "scissors" ||
+                 humanChoice === "scissors" && computerChoice === "paper" ||
+                 humanChoice === "paper" && computerChoice === "rock") { 
+                 // Human won
+            console.log("You win!"); 
+         }
+         else { // Human lost--no need to check by process of elimination
+            console.log("You lose!");
+         }
+      }
+      
     </script>
+    
   </body>
 </html>
