@@ -1,0 +1,63 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #000;
+        }
+</style>
+    </head><canvas id = 'mycanvas' height=500 width=500></canvas>
+    <script src="flappybird.js">
+<body onload="startGame()">
+</script>
+
+<p>We have created a game area! (or at least an empty canvas)</p>
+
+</body>
+</html>
+console.log('Hello World')
+function startGame() {
+    myGameArea.start();
+    component(20, 20, null, 0, 0, 'slappybird.png')
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");    
+        this.canvas.id = 'my-canvas';
+    }
+}
+    
+    
+    var myGamePiece;
+
+function startGame() {
+    myGameArea.start();
+    myGamePiece = new component(30, 30, "red", 10, 120);
+}
+
+function component(width, height, color, x, y, uri) {
+//    this.width = width;
+//    this.height = height;
+//    this.x = x;
+//    this.y = y; 
+//    ctx = myGameArea.context;
+//    ctx.fillStyle = color;
+//    ctx.fillRect(this.x, this.y, this.width, this.height);
+    
+  var canvas = document.getElementById('mycanvas');
+  console.log(canvas);
+  var context = canvas.getContext('2d');
+    console.log('hhihihhihi')
+    
+  base_image = new Image();
+  base_image.src = uri;
+  base_image.onload = function(){
+  context.drawImage(base_image, width, height);
+  }
+}
+
